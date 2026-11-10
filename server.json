@@ -90,5 +90,20 @@
         }
       ]
     }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://inference.dagon.so/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <Dagon account key (gk_...)>, for balance, purchases and chat; dagon_models and dagon_create_key work without it. The remote server never holds a wallet: purchases return the unsigned transaction to sign.",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
   ]
 }
