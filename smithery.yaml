@@ -1,0 +1,42 @@
+# Smithery configuration: https://smithery.ai/docs/build/project-config
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      dagonApiKey:
+        type: string
+        description: "Dagon account key (gk_...) for balance, purchases and chat"
+      dagonBaseUrl:
+        type: string
+        description: "Gateway URL (default https://inference.dagon.so)"
+      dagonWalletSecretKey:
+        type: string
+        description: "Optional Solana secret key for self-signed USDC purchases; use a dedicated hot wallet"
+      dagonTreasuryWallet:
+        type: string
+        description: "Trusted Dagon treasury address, required for purchases (9rMdbu4KdLWH2nPXbzhm9HTKaibGZ2ckakQbW1wPh6KK)"
+      dagonSolanaRpcUrl:
+        type: string
+        description: "Solana RPC for submitting unsponsored purchases"
+      dagonMaxPurchaseUsd:
+        type: string
+        description: "Largest purchase per call in USD (default 50; 0 disables purchases)"
+      dagonMaxPurchaseUsdPerDay:
+        type: string
+        description: "Purchase cap per UTC day in USD (default 200)"
+  commandFunction: |-
+    (config) => {
+      const env = {};
+      if (config.dagonApiKey) env.DAGON_API_KEY = String(config.dagonApiKey);
+      if (config.dagonBaseUrl) env.DAGON_BASE_URL = String(config.dagonBaseUrl);
+      if (config.dagonWalletSecretKey) env.DAGON_WALLET_SECRET_KEY = String(config.dagonWalletSecretKey);
+      if (config.dagonTreasuryWallet) env.DAGON_TREASURY_WALLET = String(config.dagonTreasuryWallet);
+      if (config.dagonSolanaRpcUrl) env.DAGON_SOLANA_RPC_URL = String(config.dagonSolanaRpcUrl);
+      if (config.dagonMaxPurchaseUsd) env.DAGON_MAX_PURCHASE_USD = String(config.dagonMaxPurchaseUsd);
+      if (config.dagonMaxPurchaseUsdPerDay) env.DAGON_MAX_PURCHASE_USD_PER_DAY = String(config.dagonMaxPurchaseUsdPerDay);
+      return { command: "npx", args: ["-y", "dagon-mcp"], env };
+    }
+  exampleConfig:
+    dagonApiKey: gk_example
+    dagonTreasuryWallet: 9rMdbu4KdLWH2nPXbzhm9HTKaibGZ2ckakQbW1wPh6KK

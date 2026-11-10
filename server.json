@@ -1,0 +1,94 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.inkwell-finance/dagon-mcp",
+  "title": "Dagon Inference",
+  "description": "Uncensored LLM inference: list models, chat, create keys, buy credits with Solana USDC.",
+  "websiteUrl": "https://inference.dagon.so",
+  "repository": {
+    "url": "https://github.com/inkwell-finance/dagon-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "dagon-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "DAGON_API_KEY",
+          "description": "Dagon account key (gk_...) for balance, purchases and chat",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "DAGON_BASE_URL",
+          "description": "Gateway URL (default https://inference.dagon.so)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_WALLET_SECRET_KEY",
+          "description": "Optional Solana secret key for self-signed USDC purchases; use a dedicated hot wallet",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "DAGON_TREASURY_WALLET",
+          "description": "Trusted Dagon treasury address, required for purchases (9rMdbu4KdLWH2nPXbzhm9HTKaibGZ2ckakQbW1wPh6KK)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_SOLANA_RPC_URL",
+          "description": "Solana RPC for submitting unsponsored purchases",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_MIN_PURCHASE_USD",
+          "description": "Smallest purchase in USD (default 1)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_MAX_PURCHASE_USD",
+          "description": "Largest purchase per call in USD (default 50; 0 disables purchases)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_MAX_PURCHASE_USD_PER_SESSION",
+          "description": "Purchase cap per server process in USD (default 200)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_MAX_PURCHASE_USD_PER_DAY",
+          "description": "Purchase cap per UTC day in USD (default 200)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_MAX_SOL_FEES",
+          "description": "Daily worst-case SOL fee cap (default 0.05)",
+          "format": "string",
+          "isRequired": false
+        },
+        {
+          "name": "DAGON_SPEND_LEDGER",
+          "description": "Path of the daily spend ledger file",
+          "format": "string",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}
