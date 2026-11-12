@@ -1,6 +1,7 @@
 # Dagon Inference MCP server
 
 [![Dagon Inference MCP server on AI Agents Listing](https://aiagentslisting.com/dagon-inference-mcp-server/badge.svg?claim=77baede62f28a69d4bcf551773d4c94a)](https://aiagentslisting.com/mcp/dagon-inference-mcp-server)
+[![Dagon Inference MCP on mcprush](https://mcprush.com/badge/dagon-inference-mcp/score.svg)](https://mcprush.com/to/dagon-inference-mcp?ref=badge)
 
 A stdio [Model Context Protocol](https://modelcontextprotocol.io) server for
 [Dagon Inference](https://inference.dagon.so): list models, check a balance, create keys, buy credits with USDC on
